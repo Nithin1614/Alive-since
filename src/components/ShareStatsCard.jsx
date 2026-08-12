@@ -14,16 +14,16 @@ export const ShareStatsCard = ({ stats }) => {
 
   const shareTitle = "Alive Since — Your life, measured in time";
   
-  // Format share text without any emojis or symbols, with clear line breaks
+  // Format share text with emojis and clear line breaks (\n\n)
   const shareText = 
-`ALIVE SINCE STATS
+`⏳ ALIVE SINCE STATS
 
-Seconds Alive: ${formatNumber(stats.totalSeconds)} seconds
-Days Alive: ${formatNumber(stats.totalDays)} days
-Total Heartbeats: ${formatNumber(stats.heartbeats)} heartbeats
-Total Breaths: ${formatNumber(stats.breaths)} breaths
+⏱️ Seconds Alive: ${formatNumber(stats.totalSeconds)} seconds
+📅 Days Alive: ${formatNumber(stats.totalDays)} days
+💓 Total Heartbeats: ${formatNumber(stats.heartbeats)} heartbeats
+🫁 Total Breaths: ${formatNumber(stats.breaths)} breaths
 
-Measure your life in time:`;
+✨ Measure your life in time:`;
 
   const handleCopyText = () => {
     const fullTextToCopy = `${shareText}\n${window.location.href}`;
@@ -81,7 +81,7 @@ Measure your life in time:`;
     ctx.font = '400 95px "DM Serif Display", Georgia, serif';
     ctx.fillText(formatNumber(stats.totalSeconds), 80, 230);
 
-    // Sub-label: SECONDS (Proper vertical spacing below number)
+    // Sub-label: SECONDS (Clean vertical spacing below number)
     ctx.fillStyle = '#c4a47c';
     ctx.font = '600 22px Inter, sans-serif';
     ctx.letterSpacing = '8px';
