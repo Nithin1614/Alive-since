@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg: #f9f6f1;
+    --surface: #f2ede5;
+    --surface2: #ece6dc;
+    --border: #ddd7cc;
+    --text: #1a1714;
+    --muted: #7d7670;
+    --dim: #bab4ac;
+    --gold: #9e7030;
+    --gold-dim: #c4943c;
+    --font-serif: 'DM Serif Display', Georgia, serif;
+    --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  html.dark {
+    --bg: #0d0d0d;
+    --surface: #111111;
+    --surface2: #181818;
+    --border: #1f1f1f;
+    --text: #ede8df;
+    --muted: #5c5752;
+    --dim: #2e2c28;
+    --gold: #c9a96e;
+    --gold-dim: #8a7248;
+  }
+
+  /* Root font-size matching secondsalive.com exact base ratio */
+  html {
+    font-size: 18px;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .font-display {
+    font-family: var(--font-serif);
+    font-weight: 400;
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Custom Input Styling matching Seconds Alive / Alive Since exact sizing */
+.date-field {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 300;
+  text-align: center;
+  padding: 0.25rem 0.25rem;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s ease;
+  caret-color: var(--gold);
+}
+
+.date-field:focus {
+  border-bottom-color: var(--gold);
+}
+
+.date-field::placeholder {
+  color: var(--dim);
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+/* Sleek visible right scrollbar matching secondsalive.com */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--dim);
+  border-radius: 5px;
+  border: 2px solid var(--bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
