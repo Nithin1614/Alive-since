@@ -37,7 +37,7 @@
 ### 5. 🪐 Experimental Temporal Suite (10 Engines)
 
 #### 1. 🪐 Cosmic Age & Planetary Birthdays
-- **NASA JPL Sidereal Orbital Speeds**: Calculates your exact age across all 8 planets plus Pluto and Ceres.
+- **NASA JPL Sidereal Orbital Speeds**: Calculates your scientifically calculated age across all 8 planets plus Pluto and Ceres.
 - **Next Planetary Birthdays**: Live countdown to your next birthday on Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune, and Pluto.
 - **Solar System Heliocentric Alignment Map**: Displays exact 360° ecliptic radial angles of all planets around the Sun on your birth date vs. today.
 
