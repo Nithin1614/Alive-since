@@ -61,6 +61,8 @@ export const SleepAndChronotype = ({ birthDate }) => {
     setQuizResult(null);
   };
 
+  const progressPct = Math.round((quizStep / CHRONOTYPE_QUESTIONS.length) * 100);
+
   return (
     <div className="space-y-16 animate-fadeIn">
       {/* SECTION 1: SLEEP TIME CALCULATOR */}
@@ -183,14 +185,14 @@ export const SleepAndChronotype = ({ birthDate }) => {
           <div className="p-8 border border-[var(--border)] bg-[var(--bg)] rounded-xl space-y-6">
             <div className="flex items-center justify-between text-xs text-[var(--muted)] uppercase font-mono">
               <span>Question {quizStep + 1} of {CHRONOTYPE_QUESTIONS.length}</span>
-              <span>{Math.round(((quizStep + 1) / CHRONOTYPE_QUESTIONS.length) * 100)}% Completed</span>
+              <span>{progressPct}% Completed</span>
             </div>
 
             {/* Progress Bar */}
             <div className="w-full h-1 bg-[var(--border)] rounded-full overflow-hidden">
               <div 
                 className="h-full bg-[var(--gold)] transition-all duration-300"
-                style={{ width: `${((quizStep + 1) / CHRONOTYPE_QUESTIONS.length) * 100}%` }}
+                style={{ width: `${progressPct}%` }}
               />
             </div>
 
