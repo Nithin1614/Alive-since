@@ -14,16 +14,16 @@ export const ShareStatsCard = ({ stats }) => {
 
   const shareTitle = "Alive Since — Your life, measured in time";
   
-  // Format share text with clean line breaks (\n\n) and clear individual lines for each stat
+  // Format share text without any emojis or symbols, with clear line breaks
   const shareText = 
-`⏳ ALIVE SINCE STATS
+`ALIVE SINCE STATS
 
-⏱️ Seconds Alive: ${formatNumber(stats.totalSeconds)} seconds
-📅 Days Alive: ${formatNumber(stats.totalDays)} days
-💓 Total Heartbeats: ${formatNumber(stats.heartbeats)} heartbeats
-🫁 Total Breaths: ${formatNumber(stats.breaths)} breaths
+Seconds Alive: ${formatNumber(stats.totalSeconds)} seconds
+Days Alive: ${formatNumber(stats.totalDays)} days
+Total Heartbeats: ${formatNumber(stats.heartbeats)} heartbeats
+Total Breaths: ${formatNumber(stats.breaths)} breaths
 
-✨ Measure your life in time:`;
+Measure your life in time:`;
 
   const handleCopyText = () => {
     const fullTextToCopy = `${shareText}\n${window.location.href}`;
@@ -74,25 +74,25 @@ export const ShareStatsCard = ({ stats }) => {
     ctx.fillStyle = '#8a8377';
     ctx.font = '500 20px Inter, sans-serif';
     ctx.letterSpacing = '6px';
-    ctx.fillText('ALIVE SINCE — YOU HAVE BEEN ALIVE FOR', 80, 120);
+    ctx.fillText('ALIVE SINCE — YOU HAVE BEEN ALIVE FOR', 80, 110);
 
     // Main Big Seconds Number
     ctx.fillStyle = '#e2d9c8';
-    ctx.font = '400 110px "Cormorant Garamond", Georgia, serif';
-    ctx.fillText(formatNumber(stats.totalSeconds), 80, 260);
+    ctx.font = '400 95px "DM Serif Display", Georgia, serif';
+    ctx.fillText(formatNumber(stats.totalSeconds), 80, 230);
 
-    // Sub-label: SECONDS
+    // Sub-label: SECONDS (Proper vertical spacing below number)
     ctx.fillStyle = '#c4a47c';
-    ctx.font = '600 24px Inter, sans-serif';
+    ctx.font = '600 22px Inter, sans-serif';
     ctx.letterSpacing = '8px';
-    ctx.fillText('SECONDS', 80, 320);
+    ctx.fillText('SECONDS', 80, 310);
 
     // Divider Line
     ctx.strokeStyle = '#24221e';
     ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.moveTo(80, 380);
-    ctx.lineTo(1120, 380);
+    ctx.moveTo(80, 370);
+    ctx.lineTo(1120, 370);
     ctx.stroke();
 
     // Bottom Stats Summary
@@ -167,11 +167,11 @@ export const ShareStatsCard = ({ stats }) => {
           You have been alive for
         </p>
 
-        <h3 className="font-display text-5xl sm:text-7xl font-normal text-[#e2d9c8] tracking-tight leading-none mb-2">
+        <h3 className="font-display text-4xl sm:text-7xl font-normal text-[#e2d9c8] tracking-tight leading-normal my-3 sm:my-4">
           {formatNumber(stats.totalSeconds)}
         </h3>
 
-        <p className="text-[#c4a47c] text-[10px] sm:text-xs tracking-[0.3em] uppercase mb-8 font-semibold">
+        <p className="text-[#c4a47c] text-[11px] sm:text-xs tracking-[0.35em] uppercase mt-2 mb-8 font-semibold">
           Seconds
         </p>
 
