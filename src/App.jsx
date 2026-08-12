@@ -9,7 +9,6 @@ import { LifeExpectancyProgress } from './components/LifeExpectancyProgress';
 import { ShareStatsCard } from './components/ShareStatsCard';
 import { CalculatorsGrid } from './components/CalculatorsGrid';
 import { FaqSection } from './components/FaqSection';
-import { BlogSection } from './components/BlogSection';
 import { Footer } from './components/Footer';
 import { CompareTimeline } from './components/CompareTimeline';
 import { MilestoneEngine } from './components/MilestoneEngine';
@@ -80,21 +79,21 @@ export function App() {
         setActiveTab={setActiveTab}
       />
 
-      <main className="max-w-5xl mx-auto px-6 sm:px-8 py-12 sm:py-16">
+      <main className="max-w-5xl mx-auto px-4 sm:px-8 py-8 sm:py-16">
         {activeTab === 'calculator' && (
-          <div className="space-y-12">
+          <div className="space-y-10 sm:space-y-12">
             {/* Hero Section */}
-            <section className="mb-12 sm:mb-16 pt-4 sm:pt-6">
-              <p className="text-[var(--muted)] text-xs tracking-[0.35em] uppercase mb-6 font-medium">
+            <section className="mb-8 sm:mb-16 pt-2 sm:pt-6">
+              <p className="text-[var(--muted)] text-xs tracking-[0.35em] uppercase mb-4 sm:mb-6 font-medium">
                 Age calculator
               </p>
               <h1 
-                className="font-display text-[var(--text)] leading-[1.05] mb-6 font-normal"
-                style={{ fontSize: 'clamp(2.5rem, 7vw, 5.5rem)' }}
+                className="font-display text-[var(--text)] leading-[1.05] mb-4 sm:mb-6 font-normal"
+                style={{ fontSize: 'clamp(2.2rem, 7vw, 5.5rem)' }}
               >
                 Your life,<br className="hidden sm:block" /> measured in time
               </h1>
-              <p className="text-[var(--muted)] text-base sm:text-lg max-w-xl leading-relaxed">
+              <p className="text-[var(--muted)] text-sm sm:text-lg max-w-xl leading-relaxed">
                 Enter your date of birth. See your life measured from your first moment to this very second.
               </p>
             </section>
@@ -109,7 +108,7 @@ export function App() {
 
             {/* Conditional Results View */}
             {stats ? (
-              <div className="animate-fadeIn">
+              <div className="animate-fadeIn space-y-10 sm:space-y-12">
                 <LiveCounter stats={stats} />
                 <QuickStatsGrid stats={stats} />
                 <YearInReview year={stats.birthYear} />
@@ -118,7 +117,7 @@ export function App() {
                 <ShareStatsCard stats={stats} />
               </div>
             ) : (
-              <div className="py-16 sm:py-24 text-center border-t border-[var(--border)] mt-12">
+              <div className="py-12 sm:py-24 text-center border-t border-[var(--border)] mt-8 sm:mt-12">
                 <p className="text-[var(--dim)] text-xs sm:text-sm tracking-[0.25em] uppercase font-medium">
                   — enter your birthdate above —
                 </p>
@@ -128,7 +127,6 @@ export function App() {
             {/* Static Content Sections */}
             <CalculatorsGrid hasStats={!!stats} />
             <FaqSection />
-            <BlogSection />
           </div>
         )}
 

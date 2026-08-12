@@ -54,6 +54,15 @@
   }
 }
 
+/* Hide scrollbar utility for clean mobile horizontal sliders */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* Custom Input Styling matching Seconds Alive / Alive Since exact sizing */
 .date-field {
   width: 100%;
