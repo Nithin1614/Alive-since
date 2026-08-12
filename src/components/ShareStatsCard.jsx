@@ -13,10 +13,21 @@ export const ShareStatsCard = ({ stats }) => {
   if (!stats) return null;
 
   const shareTitle = "Alive Since — Your life, measured in time";
-  const shareText = `I have been alive for ${formatNumber(stats.totalSeconds)} seconds (${formatNumber(stats.totalDays)} days, ${formatNumber(stats.heartbeats)} heartbeats, and ${formatNumber(stats.breaths)} breaths)! Measure your life on Alive Since.`;
+  
+  // Format share text with clean line breaks (\n\n) and clear individual lines for each stat
+  const shareText = 
+`⏳ ALIVE SINCE STATS
+
+⏱️ Seconds Alive: ${formatNumber(stats.totalSeconds)} seconds
+📅 Days Alive: ${formatNumber(stats.totalDays)} days
+💓 Total Heartbeats: ${formatNumber(stats.heartbeats)} heartbeats
+🫁 Total Breaths: ${formatNumber(stats.breaths)} breaths
+
+✨ Measure your life in time:`;
 
   const handleCopyText = () => {
-    navigator.clipboard.writeText(shareText);
+    const fullTextToCopy = `${shareText}\n${window.location.href}`;
+    navigator.clipboard.writeText(fullTextToCopy);
     setCopied(true);
     confetti({ particleCount: 40, spread: 60, origin: { y: 0.8 } });
     setTimeout(() => setCopied(false), 3000);
