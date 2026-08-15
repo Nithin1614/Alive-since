@@ -66,6 +66,7 @@ export const Header = ({ isDarkMode, toggleTheme, activeTab, setActiveTab }) => 
               return (
                 <button
                   key={item.id}
+                  id={isSpecial ? "special-features-btn-desktop" : undefined}
                   onClick={() => setActiveTab(item.id)}
                   className={`text-xs tracking-wider uppercase transition-colors duration-200 py-1 border-none bg-transparent cursor-pointer flex items-center gap-1 whitespace-nowrap ${
                     isActive
@@ -97,8 +98,9 @@ export const Header = ({ isDarkMode, toggleTheme, activeTab, setActiveTab }) => 
 
         {/* Mobile Navigation (Visible only on mobile screens < sm) */}
         <div className="flex sm:hidden items-center gap-2" ref={menuRef}>
-          {/* Special Features button stays prominently right on header */}
+          {/* 1. Special Features button */}
           <button
+            id="special-features-btn-mobile"
             onClick={() => {
               setActiveTab('special');
               setIsMenuOpen(false);
@@ -113,11 +115,24 @@ export const Header = ({ isDarkMode, toggleTheme, activeTab, setActiveTab }) => 
             <span>Special Features</span>
           </button>
 
-          {/* ☰ Menu Button */}
+          {/* 2. Theme Toggle (to the left of Menu) */}
+          <button
+            onClick={toggleTheme}
+            aria-label="Toggle Theme"
+            className="flex items-center justify-center w-7 h-7 rounded-full text-[var(--muted)] hover:text-[var(--text)] transition-colors duration-200 focus:outline-none cursor-pointer flex-shrink-0 bg-[var(--surface)]/50 border border-[var(--border)]"
+          >
+            {isDarkMode ? (
+              <Sun className="w-3.5 h-3.5 text-[var(--gold)]" />
+            ) : (
+              <Moon className="w-3.5 h-3.5 text-[var(--text)]" />
+            )}
+          </button>
+
+          {/* 3. ☰ Menu Button (Last / Far Right Side) */}
           <button
             onClick={() => setIsMenuOpen((prev) => !prev)}
             aria-label="Toggle Menu"
-            className={`flex items-center gap-1.5 px-2.5 py-1 rounded text-[11px] uppercase tracking-wider font-medium border transition-colors cursor-pointer ${
+            className={`flex items-center gap-1 px-2 py-1 rounded text-[11px] uppercase tracking-wider font-medium border transition-colors cursor-pointer ${
               isMenuOpen
                 ? 'bg-[var(--surface)] text-[var(--gold)] border-[var(--gold)]/50'
                 : 'bg-[var(--surface)]/60 text-[var(--text)] border-[var(--border)]'
@@ -133,19 +148,6 @@ export const Header = ({ isDarkMode, toggleTheme, activeTab, setActiveTab }) => 
                 <Menu className="w-3.5 h-3.5 text-[var(--gold)]" />
                 <span>Menu</span>
               </>
-            )}
-          </button>
-
-          {/* Theme Toggle */}
-          <button
-            onClick={toggleTheme}
-            aria-label="Toggle Theme"
-            className="flex items-center justify-center w-7 h-7 rounded-full text-[var(--muted)] hover:text-[var(--text)] transition-colors duration-200 focus:outline-none cursor-pointer flex-shrink-0 bg-[var(--surface)]/50 border border-[var(--border)]"
-          >
-            {isDarkMode ? (
-              <Sun className="w-3.5 h-3.5 text-[var(--gold)]" />
-            ) : (
-              <Moon className="w-3.5 h-3.5 text-[var(--text)]" />
             )}
           </button>
 
