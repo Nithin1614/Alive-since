@@ -14,6 +14,7 @@ import { CompareTimeline } from './components/CompareTimeline';
 import { MilestoneEngine } from './components/MilestoneEngine';
 import { AgeAtAnyDate } from './components/AgeAtAnyDate';
 import { SpecialFeaturesHub } from './components/SpecialFeaturesHub';
+import { SpecialFeaturesGuide } from './components/SpecialFeaturesGuide';
 import { AboutSection } from './components/AboutSection';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { TermsOfService } from './components/TermsOfService';
@@ -71,12 +72,19 @@ export function App() {
   const stats = calculateAgeStats(day, month, year, now);
 
   return (
-    <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] selection:bg-[var(--gold)] selection:text-black transition-colors duration-300">
+    <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] selection:bg-[var(--gold)] selection:text-black transition-colors duration-300 relative">
       <Header 
         isDarkMode={isDarkMode} 
         toggleTheme={toggleTheme} 
         activeTab={activeTab}
         setActiveTab={setActiveTab}
+      />
+
+      {/* Floating Animated Guide from Date Input to Special Features Header */}
+      <SpecialFeaturesGuide 
+        hasEnteredDate={!!stats} 
+        onNavigateToSpecial={() => setActiveTab('special')}
+        activeTab={activeTab}
       />
 
       <main className="max-w-5xl mx-auto px-4 sm:px-8 py-8 sm:py-16">

@@ -1,12 +1,17 @@
 import React, { useRef } from 'react';
 
-export const DateInput = ({ day, month, year, onChange }) => {
+export const DateInput = ({ day, month, year, onChange, label = "Date of birth" }) => {
   const dayRef = useRef(null);
   const monthRef = useRef(null);
   const yearRef = useRef(null);
 
   const handleDayChange = (e) => {
-    const val = e.target.value.replace(/\D/g, '').slice(0, 2);
+    let val = e.target.value.replace(/\D/g, '').slice(0, 2);
+    if (val.length === 2) {
+      const num = parseInt(val, 10);
+      if (num > 31) val = '31';
+      if (num === 0) val = '01';
+    }
     onChange('day', val);
     if (val.length === 2) {
       monthRef.current?.focus();
@@ -14,7 +19,12 @@ export const DateInput = ({ day, month, year, onChange }) => {
   };
 
   const handleMonthChange = (e) => {
-    const val = e.target.value.replace(/\D/g, '').slice(0, 2);
+    let val = e.target.value.replace(/\D/g, '').slice(0, 2);
+    if (val.length === 2) {
+      const num = parseInt(val, 10);
+      if (num > 12) val = '12';
+      if (num === 0) val = '01';
+    }
     onChange('month', val);
     if (val.length === 2) {
       yearRef.current?.focus();
@@ -36,10 +46,26 @@ export const DateInput = ({ day, month, year, onChange }) => {
     }
   };
 
+  const handleDayBlur = () => {
+    if (day && parseInt(day, 10) > 31) {
+      onChange('day', '31');
+    } else if (day && parseInt(day, 10) === 0) {
+      onChange('day', '01');
+    }
+  };
+
+  const handleMonthBlur = () => {
+    if (month && parseInt(month, 10) > 12) {
+      onChange('month', '12');
+    } else if (month && parseInt(month, 10) === 0) {
+      onChange('month', '01');
+    }
+  };
+
   return (
     <div id="date-entry" className="w-full scroll-mt-24">
       <label className="block text-[var(--muted)] text-xs tracking-[0.3em] uppercase mb-6 font-medium">
-        Date of birth
+        {label}
       </label>
       
       <div className="flex items-end gap-3 sm:gap-6 max-w-lg">
@@ -55,6 +81,7 @@ export const DateInput = ({ day, month, year, onChange }) => {
             maxLength={2}
             value={day}
             onChange={handleDayChange}
+            onBlur={handleDayBlur}
             onKeyDown={(e) => handleKeyDown(e, 'day')}
             className="date-field"
           />
@@ -78,6 +105,7 @@ export const DateInput = ({ day, month, year, onChange }) => {
             maxLength={2}
             value={month}
             onChange={handleMonthChange}
+            onBlur={handleMonthBlur}
             onKeyDown={(e) => handleKeyDown(e, 'month')}
             className="date-field"
           />

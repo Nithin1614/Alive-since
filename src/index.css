@@ -105,6 +105,71 @@
   animation: fadeIn 0.4s ease forwards;
 }
 
+/* Fish-like Swimming pointer journey from bottom date input to header button */
+@keyframes fishSwim {
+  0% {
+    opacity: 0;
+    left: 50%;
+    top: 75%;
+    transform: translate(-50%, -50%) scale(0.6) rotate(-55deg);
+  }
+  15% {
+    opacity: 1;
+    left: 45%;
+    top: 60%;
+    transform: translate(-50%, -50%) scale(1) rotate(-40deg);
+  }
+  45% {
+    left: 65%;
+    top: 40%;
+    transform: translate(-50%, -50%) scale(1.1) rotate(-65deg);
+  }
+  75% {
+    left: 70%;
+    top: 20%;
+    transform: translate(-50%, -50%) scale(1) rotate(-45deg);
+  }
+  100% {
+    opacity: 0.95;
+    left: 75%;
+    top: 65px;
+    transform: translate(-50%, -50%) scale(0.85) rotate(-50deg);
+  }
+}
+
+@keyframes fishWiggle {
+  0%, 100% {
+    transform: rotate(0deg) scaleY(1);
+  }
+  25% {
+    transform: rotate(10deg) scaleY(1.1);
+  }
+  75% {
+    transform: rotate(-10deg) scaleY(0.9);
+  }
+}
+
+@keyframes dockedHover {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-fishSwim {
+  animation: fishSwim 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.animate-fishWiggle {
+  animation: fishWiggle 0.3s ease-in-out infinite;
+}
+
+.animate-dockedHover {
+  animation: dockedHover 2.4s ease-in-out infinite;
+}
+
 /* Sleek visible right scrollbar matching secondsalive.com */
 ::-webkit-scrollbar {
   width: 10px;
